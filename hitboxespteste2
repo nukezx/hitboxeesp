@@ -224,6 +224,19 @@ getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to 
 getgenv().filltrans = 0.5 --Change fill transparency
 getgenv().outlinetrans = 0.5 --Change outline transparency
 
+if game.PlaceId == 3082002798 then
+    local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
+	GamesTab:InfoLabel("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
+	GamesTab:Button("No Cooldown", function()
+	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
+		    if v:IsA('ModuleScript') then
+			    local Module = require(v)
+				Module.DEBOUNCE = 0
+			end
+		end
+	end)
+end
+
 -- Gui to Lua
 -- Version: 3.2
 
@@ -2694,16 +2707,7 @@ end
 coroutine.wrap(SITMKLQ_fake_script)()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/cool83birdcarfly02six/UNIVERSALESPLTX/main/README.md"))()
-end)
 
-if game.PlaceId == 3082002798 then
-    local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
-	GamesTab:InfoLabel("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
-	GamesTab:Button("No Cooldown", function()
-	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
-		    if v:IsA('ModuleScript') then
-			    local Module = require(v)
-				Module.DEBOUNCE = 0
 			end
 		end
 	end)
