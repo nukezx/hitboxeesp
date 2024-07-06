@@ -1,13 +1,3 @@
---[[
-
-Open source
-Made by !vcsk0#1516
-Credits to me
-
-Credits to the Owner Who Made The ESP Script
-
-]]
-
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
@@ -17,7 +7,7 @@ local function isNumber(str)
   end
 end
 
-getgenv().HitboxSize = 15
+getgenv().HitboxSize = 6
 getgenv().HitboxTransparency = 0.9
 
 getgenv().HitboxStatus = false
@@ -32,7 +22,7 @@ getgenv().TPWalk = false
 --// UI
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/MyUILib(Unamed).lua"))();
-local Window = Library:Create("Hitbox Expander")
+local Window = Library:Create("Hitbox Expander by Nuke")
 
 local ToggleGui = Instance.new("ScreenGui")
 local Toggle = Instance.new("TextButton")
@@ -40,14 +30,14 @@ local Toggle = Instance.new("TextButton")
 ToggleGui.Name = "ToggleGui_HE"
 ToggleGui.Parent = game.CoreGui
 
-Toggle.Name = "Toggle"
+Toggle.Name = "Alternar"
 Toggle.Parent = ToggleGui
 Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
 Toggle.BackgroundTransparency = 0.660
 Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
 Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
 Toggle.Font = Enum.Font.SourceSans
-Toggle.Text = "Toggle"
+Toggle.Text = "Alternar"
 Toggle.TextScaled = true
 Toggle.TextColor3 = Color3.fromRGB(40, 40, 40)
 Toggle.TextSize = 24.000
@@ -58,23 +48,23 @@ Toggle.MouseButton1Click:connect(function()
     Library:ToggleUI()
 end)
 
-local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
-local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
-local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
+local HomeTab = Window:Tab("Início","rbxassetid://10888331510")
+local PlayerTab = Window:Tab("Jogadores","rbxassetid://12296135476")
+local VisualTab = Window:Tab("Visual","rbxassetid://12308581351")
 
-HomeTab:InfoLabel("only works on some games!")
+HomeTab:InfoLabel("Use com cuidado!")
 
-HomeTab:Section("Settings")
+HomeTab:Section("Configurações")
 
-HomeTab:TextBox("Hitbox Size", function(value)
+HomeTab:TextBox("Tamanho da Hitbox", function(value)
     getgenv().HitboxSize = value
 end)
 
-HomeTab:TextBox("Hitbox Transparency", function(number)
+HomeTab:TextBox("Transparência da Hitbox", function(number)
     getgenv().HitboxTransparency = number
 end)
 
-HomeTab:Section("Main")
+HomeTab:Section("Principal")
 
 HomeTab:Toggle("Status: ", function(state)
 	getgenv().HitboxStatus = state
@@ -119,22 +109,22 @@ HomeTab:Toggle("Status: ", function(state)
 	end)
 end)
 
-HomeTab:Toggle("Team Check", function(state)
+HomeTab:Toggle("Verificação de Equipe", function(state)
     getgenv().TeamCheck = state
 end)
 
-HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
+HomeTab:Keybind("Alternar UI", Enum.KeyCode.X, function()
     Library:ToggleUI()
 end)
 
-PlayerTab:TextBox("WalkSpeed", function(value)
+PlayerTab:TextBox("Velocidade de Caminhada", function(value)
     getgenv().Walkspeed = value
     pcall(function()
         game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
     end)
 end)
 
-PlayerTab:Toggle("Loop WalkSpeed", function(state)
+PlayerTab:Toggle("Velocidade de Caminhada em Loop", function(state)
     getgenv().loopW = state
     game:GetService("RunService").Heartbeat:Connect(function()
         if loopW == true then
@@ -145,14 +135,14 @@ PlayerTab:Toggle("Loop WalkSpeed", function(state)
     end)
 end)
 
-PlayerTab:TextBox("JumpPower", function(value)
+PlayerTab:TextBox("Poder de Pulo", function(value)
     getgenv().Jumppower = value
     pcall(function()
         game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
     end)
 end)
 
-PlayerTab:Toggle("Loop JumpPower", function(state)
+PlayerTab:Toggle("Poder de Pulo em Loop", function(state)
     getgenv().loopJ = state
     game:GetService("RunService").Heartbeat:Connect(function()
         if loopJ == true then
@@ -163,11 +153,11 @@ PlayerTab:Toggle("Loop JumpPower", function(state)
     end)
 end)
 
-PlayerTab:TextBox("TP Speed", function(value)
+PlayerTab:TextBox("TP Velocidade", function(value)
 getgenv().TPSpeed = value
 end)
 
-PlayerTab:Toggle("TP Walk", function(s)
+PlayerTab:Toggle("TP Caminhada", function(s)
 getgenv().TPWalk = s
 local hb = game:GetService("RunService").Heartbeat
 local player = game:GetService("Players")
@@ -200,7 +190,7 @@ PlayerTab:Toggle("Noclip", function(s)
     end)
 end)
 
-PlayerTab:Toggle("Infinite Jump", function(s)
+PlayerTab:Toggle("Pulo Infinito", function(s)
 getgenv().InfJ = s
     game:GetService("UserInputService").JumpRequest:connect(function()
         if InfJ == true then
@@ -209,13 +199,13 @@ getgenv().InfJ = s
     end)
 end)
 
-PlayerTab:Button("Rejoin", function()
+PlayerTab:Button("Reentrar", function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end)
 
-VisualTab:InfoLabel("Wait 3-10 seconds")
+VisualTab:InfoLabel("Espere de 3 a 10 segundos")
 
-VisualTab:Toggle("Character Highlight", function(state)
+VisualTab:Toggle("Personagem Brilhante", function(state)
 getgenv().enabled = state --Toggle on/off
 getgenv().filluseteamcolor = true --Toggle fill color using player team color on/off
 getgenv().outlineuseteamcolor = true --Toggle outline color using player team color on/off
