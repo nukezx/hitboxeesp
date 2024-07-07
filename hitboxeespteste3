@@ -73,7 +73,7 @@ HomeTab:Toggle("Status: ", function(state)
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 					pcall(function()
-						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
+						v.Character.HumanoidRootPart.Size = Vector3.new(TamanhodaHitbox, TamanhodaHitbox, TamanhodaHitbox)
 						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
 						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 						v.Character.HumanoidRootPart.Material = "Neon"
@@ -85,7 +85,7 @@ HomeTab:Toggle("Status: ", function(state)
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
 					pcall(function()
-						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
+						v.Character.HumanoidRootPart.Size = Vector3.new(TamanhodaHitbox, TamanhodaHitbox, TamanhodaHitbox)
 						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
 						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 						v.Character.HumanoidRootPart.Material = "Neon"
