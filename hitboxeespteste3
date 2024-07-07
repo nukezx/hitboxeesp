@@ -8,7 +8,7 @@ local function isNumber(str)
 end
 
 getgenv().TamanhodaHitbox = 6
-getgenv().HitboxTransparency = 0.9
+getgenv().TransparênciadaHitbox = 0.9
 
 getgenv().HitboxStatus = false
 getgenv().TeamCheck = false
@@ -61,7 +61,7 @@ HomeTab:TextBox("Tamanho da Hitbox", function(value)
 end)
 
 HomeTab:TextBox("Transparência da Hitbox", function(number)
-    getgenv().HitboxTransparency = number
+    getgenv().TransparênciadaHitbox = number
 end)
 
 HomeTab:Section("Principal")
