@@ -8,7 +8,7 @@ local function isNumber(str)
 end
 
 getgenv().TamanhodaHitbox = 6
-getgenv().HitboxTransparency = 0.9
+getgenv().TransparenciadaHitbox = 0.9
 
 getgenv().HitboxStatus = false
 getgenv().TeamCheck = false
@@ -61,7 +61,7 @@ HomeTab:TextBox("Tamanho da Hitbox", function(value)
 end)
 
 HomeTab:TextBox("Transparência da Hitbox", function(number)
-    getgenv().HitboxTransparency = number
+    getgenv().TransparenciadaHitbox = number
 end)
 
 HomeTab:Section("Principal")
@@ -74,7 +74,7 @@ HomeTab:Toggle("Status: ", function(state)
 				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 					pcall(function()
 						v.Character.HumanoidRootPart.Size = Vector3.new(TamanhodaHitbox, TamanhodaHitbox, TamanhodaHitbox)
-						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						v.Character.HumanoidRootPart.Transparency = TransparenciadaHitbox
 						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 						v.Character.HumanoidRootPart.Material = "Neon"
 						v.Character.HumanoidRootPart.CanCollide = false
@@ -86,7 +86,7 @@ HomeTab:Toggle("Status: ", function(state)
 				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
 					pcall(function()
 						v.Character.HumanoidRootPart.Size = Vector3.new(TamanhodaHitbox, TamanhodaHitbox, TamanhodaHitbox)
-						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						v.Character.HumanoidRootPart.Transparency = TransparenciadaHitbox
 						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 						v.Character.HumanoidRootPart.Material = "Neon"
 						v.Character.HumanoidRootPart.CanCollide = false
