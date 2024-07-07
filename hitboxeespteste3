@@ -7,7 +7,7 @@ local function isNumber(str)
   end
 end
 
-getgenv().HitboxSize = 6
+getgenv().TamanhodaHitbox = 6
 getgenv().HitboxTransparency = 0.9
 
 getgenv().HitboxStatus = false
@@ -57,7 +57,7 @@ HomeTab:InfoLabel("Use com cuidado!")
 HomeTab:Section("Configurações")
 
 HomeTab:TextBox("Tamanho da Hitbox", function(value)
-    getgenv().HitboxSize = value
+    getgenv().TamanhodaHitbox = value
 end)
 
 HomeTab:TextBox("Transparência da Hitbox", function(number)
