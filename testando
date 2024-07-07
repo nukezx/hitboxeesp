@@ -242,6 +242,19 @@ end
 
 VisualTab:Toggle("teste de botao", function(state)
 
+			elseif script.Parent.HEALTHESP.TextButton.BackgroundColor3 ~= Color3.fromRGB(47, 47, 47) then
+				--health
+				pcall(function()
+					for i,v in pairs(game.Players:GetPlayers()) do
+											if v.Name ~= game.Players.LocalPlayer.Name then 
+							pcall(function()
+							if v.Character.Head:FindFirstChild("6ff7ds09n") then
+								v.Character.Head["6ff7ds09n"].Frame.TextLabel.Text = v.Character.Humanoid.Health.." Hp"
+							end
+						end)
+						end
+						end
+					script.Parent.Parent.ESPSTUFF.Dup.Text = "Health"
 			end
 		end
 	end)
