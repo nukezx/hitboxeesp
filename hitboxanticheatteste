@@ -16,6 +16,24 @@ local function isNumber(str)
     return false
 end
 
+-- Função de Detecção de Anti-Cheat
+local function detectAntiCheat()
+    local suspiciousNames = {"anticheat", "security", "protector", "admin"}  -- Lista de nomes suspeitos
+    local function checkScripts(container)
+        for _, child in ipairs(container:GetChildren()) do
+            if child:IsA("Script") or child:IsA("LocalScript") or child:IsA("ModuleScript") then
+                for _, name in ipairs(suspiciousNames) do
+                    if string.find(child.Name:lower(), name) then
+                        return true
+                    end
+                end
+            end
+            if checkScripts(child) then return true end
+        end
+    end
+    return checkScripts(game.Workspace) or checkScripts(game.Players) or checkScripts(game.ReplicatedStorage)
+end
+
 -- Variáveis Globais
 local HitboxSize = 15
 local HitboxTransparency = 0.9
@@ -76,6 +94,11 @@ HomeTab:Toggle("Status: ", function(state)
     HitboxStatus = state
     game:GetService('RunService').RenderStepped:Connect(function()
         if HitboxStatus then
+            if detectAntiCheat() then
+                print("Anti-cheat detected. Disabling hitbox expansion.")
+                HitboxStatus = false
+                return
+            end
             for _, v in ipairs(Players:GetPlayers()) do
                 if v.Name ~= Players.LocalPlayer.Name and (not TeamCheck or Players.LocalPlayer.Team ~= v.Team) then
                     pcall(function()
